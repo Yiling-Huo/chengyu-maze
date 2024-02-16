@@ -1,8 +1,5 @@
 import pygame, csv, os, random
 
-# Set working directory to the location of this .py file
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
 ##########
 # Appearances
 ##########
@@ -244,6 +241,8 @@ def wrong():
 def main():
     global screen, icon, clock, button_font, text_font, text_font_small
     global started, selected, current_location, option_buttons, option_l_rect, option_r_rect
+    # Set working directory to the location of this .py file
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     pygame.init()
     screen = pygame.display.set_mode((window_width, window_height))
     clock = pygame.time.Clock()
