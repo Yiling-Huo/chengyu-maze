@@ -100,15 +100,16 @@ def start():
 
 # initialise a game of 20 trials
 def init_game():
-    global trial_count, correct_count, chengyus
+    global trial_count, correct_count, chengyus, reached_end
     trial_count = 0
     correct_count = 0
+    reached_end = False
     chengyus = []
     init_trial()
 
 # initialise a trial
 def init_trial():
-    global trial_count, chengyu, chengyus, selected, current_location, last_chengyu_freq
+    global trial_count, chengyu, chengyus, selected, current_location, last_chengyu_freq, reached_end
     wipe()
     match trial_count:
         case 0:
@@ -117,16 +118,27 @@ def init_trial():
             chengyus.append(chengyu)
             #last_chengyu_freq = int(chengyu_frequency[chengyu])
         case _:
+            # in case we reached the last entry
+            if reached_end:
+                # get a random one from the most difficult ones
+                chengyu_list_new = [item for item in chengyu_list if item not in chengyus]
+                random_chengyu = random.choice(chengyu_list_new[-50:])
+                chengyu = random_chengyu
+                chengyus.append(chengyu)
             # otherwise select a chengyu that's more difficult than the previous one
-            while True:
-                random_chengyu = random.choice(chengyu_list)
-                # check if the frequency of randomly selected chengyu is smaller than or equal to the last frequency and not to infrequent immediately
-                # and check if it's not already appeared
-                if chengyu_list.index(chengyu) < chengyu_list.index(random_chengyu) < chengyu_list.index(chengyu)+50 and random_chengyu not in chengyus:
-                    # if so, get the item and break out of while
-                    chengyu = random_chengyu
-                    chengyus.append(chengyu)
-                    break
+            else:
+                while True:
+                    random_chengyu = random.choice(chengyu_list)
+                    # check if the frequency of randomly selected chengyu is smaller than or equal to the last frequency and not to infrequent immediately
+                    # and check if it's not already appeared
+                    if chengyu_list.index(chengyu) < chengyu_list.index(random_chengyu) < chengyu_list.index(chengyu)+50 and random_chengyu not in chengyus:
+                        # if so, get the item and break out of while
+                        chengyu = random_chengyu
+                        chengyus.append(chengyu)
+                        # mark if the last entry is selected
+                        if chengyu == chengyu_list[-1]:
+                            reached_end = True
+                        break
     # change variables
     selected = [chengyu[0]]
     current_location = 1
