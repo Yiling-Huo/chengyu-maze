@@ -160,8 +160,7 @@ def get_candidate(chengyu, current_location):
     found = any(chengyu[:current_location]+candidate in c for c in chengyu_list)
     if found:
         return get_candidate(chengyu, current_location)
-    else:
-        return candidate
+    return candidate
 
 def select():
     mouse_pos = pygame.mouse.get_pos()
