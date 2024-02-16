@@ -1,9 +1,0 @@
-- first the first character appears already and the rest is the maze task
-- mouse click?
-- game with a total trial number (like 15 or 20?)
-- score shown somewhere constantly on the screen
-- debrief and ranking at the end of each game
-- increasing difficulty by frequency
-- list of answers at the end of game???
-
-- the other option matches the correct one in character frequency
