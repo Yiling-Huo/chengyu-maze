@@ -1,4 +1,4 @@
-# in cmd, run: py setup.py build
+# in cmd, run: py build.py build
 
 import cx_Freeze
 
