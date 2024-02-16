@@ -143,22 +143,22 @@ def init_trial():
                 # in case we reached the last entry
                 if reached_end:
                     # get a random one from the most difficult ones
-                    chengyu_list_new = [item for item in chengyu_list if item not in chengyus]
+                    chengyu_list_new = [item for item in chengyu_list_normal if item not in chengyus]
                     random_chengyu = random.choice(chengyu_list_new[-50:])
                     chengyu = random_chengyu
                     chengyus.append(chengyu)
                 # otherwise select a chengyu that's more difficult than the previous one
                 else:
                     while True:
-                        random_chengyu = random.choice(chengyu_list)
+                        random_chengyu = random.choice(chengyu_list_normal)
                         # check if the frequency of randomly selected chengyu is smaller than or equal to the last frequency and not to infrequent immediately
                         # and check if it's not already appeared
-                        if chengyu_list.index(chengyu) < chengyu_list.index(random_chengyu) < chengyu_list.index(chengyu)+50 and random_chengyu not in chengyus:
+                        if chengyu_list_normal.index(chengyu) < chengyu_list_normal.index(random_chengyu) < chengyu_list_normal.index(chengyu)+50 and random_chengyu not in chengyus:
                             # if so, get the item and break out of while
                             chengyu = random_chengyu
                             chengyus.append(chengyu)
                             # mark if the last entry is selected
-                            if chengyu == chengyu_list[-1]:
+                            if chengyu == chengyu_list_normal[-1]:
                                 reached_end = True
                             break
     # change variables
