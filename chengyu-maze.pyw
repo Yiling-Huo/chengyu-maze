@@ -18,7 +18,7 @@ with open('assets/chengyu-list.csv', 'r', encoding='utf-8') as chengyu_input:
     readcy = csv.reader(chengyu_input)
     contents = [row for row in readcy]
     # This list is already ordered by frequency high to low (i.e. difficulty low to high)
-    chengyu_list = [row[0] for row in contents if int(row[1])>0]
+    chengyu_list = [row[0] for row in contents]
     chengyu_list_normal = [row[0] for row in contents if int(row[1])>0]
     chengyu_list_hard = [row[0] for row in contents if int(row[1])==0]
 
