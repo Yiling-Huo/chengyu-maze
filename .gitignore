@@ -1,4 +1,6 @@
 Thumbs.db
 build/
-materials/
+materials/*.csv
+materials/*.txt
+materials/*.xlsx
 idea.txt
